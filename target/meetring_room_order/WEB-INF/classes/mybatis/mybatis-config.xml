@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/mtr?characterEncoding=UTF-8"/>
+                <property name="username" value="root"/>
+                <property name="password" value="621374as"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <!--删除Mybatis.xml中的<mappers>标签所有内容。因为如果user-mapper.xml与namespace的接口在同一路径下，就不需要在mybaits.xml中再进行配置了。-->
+    <!--<mappers>-->
+    <!--<mapper resource="mapper/LadderMapper.xml"/>-->
+    <!--<mapper resource="mapper/PlayerMapper.xml"/>-->
+    <!--</mappers>-->
+
+</configuration>

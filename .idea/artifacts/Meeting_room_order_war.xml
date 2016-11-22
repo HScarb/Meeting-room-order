@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="Meeting-room-order:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="meetring_room_order.war">
+      <element id="artifact" artifact-name="Meeting-room-order:war exploded" />
+    </root>
+  </artifact>
+</component>
