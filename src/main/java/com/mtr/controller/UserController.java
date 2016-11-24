@@ -35,14 +35,10 @@ public class UserController {
 
     @ResponseBody
     @RequestMapping("/responseEntity")
-    public List<User> responseEntityTest()
+    public Dictionary<String, String> responseEntityTest()
     {
         Dictionary<String, String> dictionary = new Hashtable<String, String>();
         dictionary.put("Status", "true");
-        User user = new User();
-        user.setId(1234);
-        List<User> testList = new ArrayList<>();
-        testList.add(user);
-        return testList;
+        return dictionary;
     }
 }

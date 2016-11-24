@@ -80,4 +80,5 @@
         <!-- <property name="typeAliasesPackage" value="com.tiantian.ckeditor.model"
             /> -->
     </bean>
+
 </beans>
