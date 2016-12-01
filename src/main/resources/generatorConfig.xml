@@ -51,9 +51,10 @@
             <property name="enableSubPackages" value="false"/>
         </javaClientGenerator>
         <!-- 指定数据库表 -->
-        <table schema="general" tableName="meeting_room" domainObjectName="MeetingRoom"/>
-        <table schema="general" tableName="order" domainObjectName="Order"/>
-        <table schema="general" tableName="user" domainObjectName="User"/>
+        <!--<table schema="general" tableName="meeting_room" domainObjectName="MeetingRoom"/>-->
+        <!--<table schema="general" tableName="order" domainObjectName="Order"/>-->
+        <!--<table schema="general" tableName="user" domainObjectName="User"/>-->
+        <table schema="general" tableName="meeting" domainObjectName="Meeting"/>
 
     </context>
 </generatorConfiguration>

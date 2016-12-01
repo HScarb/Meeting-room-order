@@ -1,10 +1,10 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="Meeting-room-order:war exploded">
+  <artifact type="exploded-war" name="meetring_room_order:war exploded">
     <output-path>$PROJECT_DIR$/target/meetring_room_order</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="Meeting-room-order" />
+          <element id="module-output" name="meetring_room_order" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: org.springframework:spring-core:4.3.2.RELEASE" />
@@ -35,7 +35,7 @@
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/target/meetring_room_order/META-INF/MANIFEST.MF" />
       </element>
-      <element id="javaee-facet-resources" facet="Meeting-room-order/web/Web" />
+      <element id="javaee-facet-resources" facet="meetring_room_order/web/Web" />
     </root>
   </artifact>
 </component>
