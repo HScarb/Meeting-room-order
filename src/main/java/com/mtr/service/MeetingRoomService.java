@@ -18,4 +18,6 @@ public interface MeetingRoomService {
     Boolean deleteByName(String meetingRoomName);
 
     Boolean deleteByID(Integer id);
+
+    List<MeetingRoom> selectFreeMeetingRoom(Integer startTime, Integer endTime);
 }

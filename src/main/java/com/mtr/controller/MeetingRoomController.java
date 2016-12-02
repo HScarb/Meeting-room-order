@@ -11,6 +11,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Dictionary;
 import java.util.Hashtable;
+import java.util.List;
 
 /**
  * Created by Scarb's Surface on 11/28/2016.
@@ -43,5 +44,23 @@ public class MeetingRoomController {
         Dictionary<String, Boolean> dict = new Hashtable<>();
         dict.put("Status", meetingRoomService.deleteByID(ID));
         return dict;
+    }
+
+    @ResponseBody
+    @RequestMapping("/searchFreeMeetingRoom")
+    public List<MeetingRoom> searchFreeMeetingRoom(HttpServletRequest request)
+    {
+        try {
+            String starttime = request.getParameter("starttime");
+            String endtime = request.getParameter("endtime");
+            Integer startTime = Integer.parseInt(starttime);
+            Integer endTime = Integer.parseInt(endtime);
+
+            return meetingRoomService.selectFreeMeetingRoom(startTime, endTime);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }
