@@ -20,15 +20,33 @@
     <title>Login</title>
 </head>
 <body>
+    <h2>checkLogin</h2>
     <form action="${ctx}/checkLogin" method="post">
         username: <input type="text" name="username"><br>
         password: <input type="password" name="password"><br>
         <input type="submit" value="login">
     </form>
     <br>
-    <form action="${ctx}/searchByUnit" method="post">
+    <h2>checkUserName</h2>
+    <form action="${ctx}/checkUserName" method="post">
+        username: <input type="text" name="username"><br>
+        <input type="submit" value="submit">
+    </form>
+    <br>
+    <h2>checkRegister</h2>
+    <form action="${ctx}/checkRegister">
+        username: <input type="text" name="username"><br>
+        password: <input type="text" name="password"><br>
+        name: <input type="text" name="name"><br>
+        company: <input type="text" name="company"><br>
+        email: <input type="text" name="email"><br>
+        department: <input type="text" name="department"><br>
+        <input type="submit" value="submit">
+    </form>
+    <h2>searchUserByUnit</h2>
+    <form action="${ctx}/searchUserByUnit">
         unit: <input type="text" name="unit"><br>
-        <input type="submit" value="search">
+        <input type="submit" value="submit">
     </form>
 </body>
 </html>

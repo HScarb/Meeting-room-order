@@ -12,6 +12,7 @@
 </head>
 <body>
     <form action="${ctx}/addMeeting" method="post">
+        <h3>addMeeting</h3>
         startTime: <input type="text" name="starttime"><br>
         endTime: <input type="text" name="endtime"><br>
         meeting room name: <input type="text" name="mtrnumber"><br>
@@ -20,6 +21,12 @@
         phone: <input type="text" name="contact"><br>
         member: <input type="text" name="remind"><br>
         remark: <input type="text" name="tip"><br>
+        <input type="submit" value="submit">
+    </form>
+    <br>
+    <form action="${ctx}/searchMeetingByMemberId" method="post">
+        <h3>searchMeetingByMemberId</h3>
+        memberid: <input type="text" name="memberid"><br>
         <input type="submit" value="submit">
     </form>
 </body>

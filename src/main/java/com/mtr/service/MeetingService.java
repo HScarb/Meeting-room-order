@@ -13,4 +13,6 @@ public interface MeetingService {
     Boolean isMeetingConfilct(List<Meeting> meetings, Integer startTime, Integer endTime);
 
     List<Meeting> selectByUserName(String userName);
+
+    List<Meeting> selectByMemberId(String memberId);
 }

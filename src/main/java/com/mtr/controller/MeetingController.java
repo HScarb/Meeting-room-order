@@ -47,11 +47,22 @@ public class MeetingController {
             starttime = request.getParameter("starttime");
             startTime = Integer.parseInt(starttime);
         }
-        else
+        else {
             starttime = null;
+        }
+//        if (request.getParameter())
 
         Dictionary<String, Boolean> dict = new Hashtable();
         dict.put("Status", true);
         return dict;
+    }
+
+    @ResponseBody
+    @RequestMapping("/searchMeetingByMemberId")
+    public List<Meeting> searchMeetingByMemberId(HttpServletRequest request)
+    {
+        String memberId = request.getParameter("memberid");
+
+        return meetingService.selectByMemberId(memberId);
     }
 }

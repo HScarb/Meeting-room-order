@@ -63,4 +63,19 @@ public class MeetingServiceImpl implements MeetingService{
             return null;
         }
     }
+
+    @Override
+    public List<Meeting> selectByMemberId(String memberId) {
+        MeetingExample meetingExample = new MeetingExample();
+        MeetingExample.Criteria cri = meetingExample.createCriteria();
+
+        cri.andMemberLike("%" + memberId + "%");
+        cri.andIsendEqualTo(false);
+        try {
+            return meetingMapper.selectByExample(meetingExample);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

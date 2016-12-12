@@ -3,7 +3,6 @@ package com.mtr.controller;
 import com.mtr.model.User;
 import com.mtr.model.UserExample;
 import com.mtr.service.UserService;
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,72 +31,77 @@ public class UserController {
         return mav;
     }
 
-    @RequestMapping("/login")
+    @RequestMapping("/user")
     public ModelAndView toLogin()
     {
-        ModelAndView mav = new ModelAndView("login");
+        ModelAndView mav = new ModelAndView("user");
         return mav;
     }
 
-    @ResponseBody
-    @RequestMapping("/responseEntity")
-    public Dictionary<String, Boolean> responseEntityTest()
-    {
-        Dictionary<String, Boolean> dictionary = new Hashtable<String, Boolean>();
-        dictionary.put("Status", true);
-        return dictionary;
-    }
-
+    /**
+     * 1.验证登录
+     * @param request
+     * @return
+     */
     @ResponseBody
     @RequestMapping("/checkLogin")
-    public Dictionary<String, Boolean> checkLogin(HttpServletRequest request)
+    public Dictionary<String, Object> checkLogin(HttpServletRequest request)
     {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
-        Dictionary<String, Boolean> dict = new Hashtable<>();
-        dict.put("Status", userService.UserLogin(username, password));
-        return dict;
+        //Boolean flag = userService.U(username, password);
+
+
+        return userService.UserLogin(username, password);
     }
 
+    /**
+     * 2.检查用户名是否重复
+     * @param request
+     * @return
+     */
     @ResponseBody
     @RequestMapping("/checkUserName")
-    public Dictionary<String, Boolean> checkUserName(HttpServletRequest request)
+    public Dictionary<String, Object> checkUserName(HttpServletRequest request)
     {
         String username = request.getParameter("username");
 
-        Dictionary<String, Boolean> dict = new Hashtable<>();
-        // 检测用户名是否存在
-        if (userService.isUserNameExist(username))
-            // 用户名存在，则不可用，返回false
-            dict.put("Status", false);
-        else
-            dict.put("Status", true);
-        return dict;
+        return userService.checkUserName(username);
     }
 
+    /**
+     * 3.用户注册
+     * @param request
+     * @return
+     */
     @ResponseBody
     @RequestMapping("/checkRegister")
-    public Dictionary<String, Boolean> checkRegister(HttpServletRequest request)
+    public Dictionary<String, Object> checkRegister(HttpServletRequest request)
     {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        String name = request.getParameter("password");
-        String company = request.getParameter("unit");
-        String email = request.getParameter("mail");
+        String name = request.getParameter("name");
+        String company = request.getParameter("company");
+        String email = request.getParameter("email");
+        String department = request.getParameter("department");
 
         User user = new User();
         user.setUserName(username);
-        user.setCompany(password);
+        user.setPassword(password);
         user.setName(name);
         user.setCompany(company);
         user.setEmail(email);
+        user.setDepartment(department);
 
-        Dictionary<String, Boolean> dictionary = new Hashtable<String, Boolean>();
-        dictionary.put("Status", userService.UserRegister(user));
-        return dictionary;
+        return userService.UserRegister(user);
     }
 
+    /**
+     * 5.根据单位搜索
+     * @param request
+     * @return
+     */
     @ResponseBody
     @RequestMapping("/searchUserByUnit")
     public List<User> searchByUnit(HttpServletRequest request)
@@ -125,5 +129,47 @@ public class UserController {
         Dictionary<String, Boolean> dictionary = new Hashtable<String, Boolean>();
         dictionary.put("Status", userService.changePassword(ID, oldpwd, newpwd));
         return dictionary;
+    }
+
+    @ResponseBody
+    @RequestMapping("/adminSearchUser")
+    public List<User> adminUpdateUser(HttpServletRequest request)
+    {
+        String name = request.getParameter("name");
+
+        if (name.equals("all"))
+            return userService.selectAll();
+        else
+            return userService.selectByName(name);
+    }
+
+    @ResponseBody
+    @RequestMapping("/deleteUser")
+    public Dictionary<String, Boolean> deleteUser(HttpServletRequest request)
+    {
+        String username = request.getParameter("username");
+
+        Dictionary<String, Boolean> dictionary = new Hashtable<String, Boolean>();
+        dictionary.put("Status", userService.deleteByUserName(username));
+
+        return dictionary;
+    }
+
+    @ResponseBody
+    @RequestMapping("/addUser")
+    public void addUser(HttpServletRequest request)
+    {
+        return;
+    }
+
+
+    @ResponseBody
+    @RequestMapping("/updateUser")
+    public Dictionary<String, Boolean> updateUser(HttpServletRequest request)
+    {
+        String type = request.getParameter("type");
+        String value = request.getParameter("value");
+
+        return null;
     }
 }

@@ -2,7 +2,6 @@ package com.mtr.service.Impl;
 
 import com.mtr.dao.MeetingRoomMapper;
 import com.mtr.model.Meeting;
-import com.mtr.model.MeetingExample;
 import com.mtr.model.MeetingRoom;
 import com.mtr.model.MeetingRoomExample;
 import com.mtr.service.MeetingRoomService;
@@ -11,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
 import java.util.List;
 
 /**

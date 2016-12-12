@@ -6,6 +6,7 @@ import com.mtr.service.MeetingRoomService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -20,6 +21,13 @@ import java.util.List;
 public class MeetingRoomController {
     @Resource
     private MeetingRoomService meetingRoomService;
+
+    @RequestMapping("/meetingroom")
+    public ModelAndView toLogin()
+    {
+        ModelAndView mav = new ModelAndView("meetingroom");
+        return mav;
+    }
 
     @ResponseBody
     @RequestMapping("/meetingRoomProperties")
@@ -46,6 +54,11 @@ public class MeetingRoomController {
         return dict;
     }
 
+    /**
+     * 4.按时间查询空闲会议室
+     * @param request
+     * @return
+     */
     @ResponseBody
     @RequestMapping("/searchFreeMeetingRoom")
     public List<MeetingRoom> searchFreeMeetingRoom(HttpServletRequest request)

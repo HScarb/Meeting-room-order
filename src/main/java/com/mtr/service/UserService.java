@@ -3,6 +3,7 @@ package com.mtr.service;
 import com.mtr.model.User;
 import com.mtr.model.UserExample;
 
+import java.util.Dictionary;
 import java.util.List;
 
 /**
@@ -13,11 +14,19 @@ public interface UserService {
 
     List<User> selectByExample(UserExample userExample);
 
-    Boolean UserLogin(String userName, String password);
-
     Boolean isUserNameExist(String userName);
 
-    Boolean UserRegister(User user);
+    Dictionary<String, Object> UserLogin(String userName, String password);
+
+    Dictionary<String, Object> checkUserName(String userName);
+
+    Dictionary<String, Object> UserRegister(User user);
 
     Boolean changePassword(Integer userID, String oldpw, String newpw);
+
+    List<User> selectAll();
+
+    List<User> selectByName(String name);
+
+    Boolean deleteByUserName(String userName);
 }

@@ -12,14 +12,21 @@
 </head>
 <body>
     <form action="${ctx}/addMeeting" method="post">
-        starttime: <input type="text" name="starttime"><br>
-        endtime: <input type="text" name="endtime"><br>
+        <h3>addMeeting</h3>
+        startTime: <input type="text" name="starttime"><br>
+        endTime: <input type="text" name="endtime"><br>
         meeting room name: <input type="text" name="mtrnumber"><br>
         theme: <input type="text" name="theme"><br>
         type: <input type="text" name="type"><br>
         phone: <input type="text" name="contact"><br>
         member: <input type="text" name="remind"><br>
         remark: <input type="text" name="tip"><br>
+        <input type="submit" value="submit">
+    </form>
+    <br>
+    <form action="${ctx}/searchMeetingByMemberId" method="post">
+        <h3>searchMeetingByMemberId</h3>
+        memberid: <input type="text" name="memberid"><br>
         <input type="submit" value="submit">
     </form>
 </body>
