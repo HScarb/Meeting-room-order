@@ -2,6 +2,7 @@ package com.mtr.service;
 
 import com.mtr.model.Meeting;
 
+import java.util.Dictionary;
 import java.util.List;
 
 /**
@@ -15,4 +16,8 @@ public interface MeetingService {
     List<Meeting> selectByUserName(String userName);
 
     List<Meeting> selectByMemberId(String memberId);
+
+    Dictionary<String, Object> checkAddMeeting(Meeting meeting);
+
+    Boolean isMeetingEnd(Integer endtime);
 }

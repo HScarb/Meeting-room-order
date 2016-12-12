@@ -9,6 +9,8 @@ import com.mtr.service.MeetingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Dictionary;
+import java.util.Hashtable;
 import java.util.List;
 
 /**
@@ -77,5 +79,26 @@ public class MeetingServiceImpl implements MeetingService{
             e.printStackTrace();
             return null;
         }
+    }
+
+    @Override
+    public Dictionary<String, Object> checkAddMeeting(Meeting meeting) {
+        Dictionary<String, Object> dict = new Hashtable<>();
+
+        try {
+            meetingMapper.insert(meeting);
+            dict.put("Status", true);
+        } catch (Exception e) {
+            e.printStackTrace();
+            dict.put("Status", false);
+        }
+        return dict;
+    }
+
+    @Override
+    public Boolean isMeetingEnd(Integer endtime) {
+        if (endtime < System.currentTimeMillis())
+            return true;
+        return false;
     }
 }

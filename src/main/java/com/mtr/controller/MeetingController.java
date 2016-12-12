@@ -21,7 +21,28 @@ public class MeetingController {
     @Resource
     private MeetingService meetingService;
 
-    @RequestMapping
+    private String parseString(String requestParam, HttpServletRequest request)
+    {
+        String result = request.getParameter(requestParam);
+        if (result != null && result != "")
+            return result;
+        return "";
+    }
+
+    private Integer parseInteger(String requestParam, HttpServletRequest request)
+    {
+        Integer result = -1;
+        String string = parseString(requestParam, request);
+        try {
+            result = Integer.parseInt(string);
+            return result;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return -1;
+        }
+    }
+
+    @RequestMapping("/meeting")
     public ModelAndView toMeeting()
     {
         ModelAndView mav = new ModelAndView("meeting");
@@ -37,24 +58,45 @@ public class MeetingController {
         return meetingService.selectByUserName(userName);
     }
 
+    /**
+     * 6.提交预定会议室表单，添加会议记录
+     * @param request
+     * @return
+     */
     @ResponseBody
     @RequestMapping("/addMeeting")
-    public Dictionary<String, Boolean> addMeeting(HttpServletRequest request)
+    public Dictionary<String, Object> addMeeting(HttpServletRequest request)
     {
-        String starttime, endtime, mtrname, theme, type, phone, member, remark;
-        Integer startTime, endTime, mtrID, typeID;
-        if (request.getParameter("starttime") != null || request.getParameter("starttime") != ""){
-            starttime = request.getParameter("starttime");
-            startTime = Integer.parseInt(starttime);
-        }
-        else {
-            starttime = null;
-        }
-//        if (request.getParameter())
+        String theme, phone, contact, remind, participate, tip;
+        Integer userid, starttime, endtime, mtrnumber, type;
 
-        Dictionary<String, Boolean> dict = new Hashtable();
-        dict.put("Status", true);
-        return dict;
+        userid = parseInteger("userid", request);
+        starttime = parseInteger("starttime", request);
+        endtime = parseInteger("endtime", request);
+        mtrnumber = parseInteger("mtrnumber", request);
+        theme = parseString("theme", request);
+        type = parseInteger("type", request);
+        contact = parseString("contact", request);
+        phone = parseString("phone", request);
+        remind = parseString("remind", request);
+        participate = parseString("participate", request);
+        tip = parseString("tip", request);
+
+        Meeting meeting = new Meeting();
+        meeting.setBookedBy(userid);
+        meeting.setStartTime(starttime);
+        meeting.setEndTime(endtime);
+        meeting.setMeetingRoom(mtrnumber);
+        meeting.setTheme(theme);
+        meeting.setType(type);
+        meeting.setContracter(contact);
+        meeting.setPhone(phone);
+        meeting.setMember(remind);
+        meeting.setParticipate(participate);
+        meeting.setRemark(tip);
+        meeting.setIsend(meetingService.isMeetingEnd(endtime));
+
+        return meetingService.checkAddMeeting(meeting);
     }
 
     @ResponseBody
