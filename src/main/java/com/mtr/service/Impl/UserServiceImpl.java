@@ -96,15 +96,19 @@ public class UserServiceImpl implements UserService {
         return dict;
     }
 
-
-
     @Override
-    public Boolean changePassword(Integer userID, String oldpw, String newpw) {
+    public Dictionary<String, Object> changePassword(Integer userID, String oldpw, String newpw) {
+        Dictionary<String, Object> dict = new Hashtable<>();
+
         User user = userMapper.selectByPrimaryKey(userID);
         if(!user.getPassword().equals(oldpw))
-            return false;
-        user.setPassword(newpw);
-        return true;
+            dict.put("Status", false);
+        else {
+            user.setPassword(newpw);
+            userMapper.updateByPrimaryKey(user);
+            dict.put("Status", true);
+        }
+        return dict;
     }
 
     @Override
@@ -141,6 +145,34 @@ public class UserServiceImpl implements UserService {
             e.printStackTrace();
             return false;
         }
+    }
+
+    @Override
+    public Dictionary<String, Object> updateUser(String username, String type, String value) {
+        Dictionary<String, Object> dict = new Hashtable<>();
+        User user = userMapper.selectByUserName(username);
+
+        switch (type){
+            case "name":
+                user.setName(value);
+                break;
+            case "unit":
+                user.setCompany(value);
+                break;
+            case "mail":
+                user.setEmail(value);
+                break;
+            default:
+                dict.put("Status", false);
+                return dict;
+        }
+        try {
+            userMapper.updateByPrimaryKey(user);
+            dict.put("Status", true);
+        } catch (Exception e) {
+            dict.put("Status", false);
+        }
+        return dict;
     }
 
     @Override

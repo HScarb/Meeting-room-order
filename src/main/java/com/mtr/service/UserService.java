@@ -22,11 +22,13 @@ public interface UserService {
 
     Dictionary<String, Object> UserRegister(User user);
 
-    Boolean changePassword(Integer userID, String oldpw, String newpw);
+    Dictionary<String, Object> changePassword(Integer userID, String oldpw, String newpw);
 
     List<User> selectAll();
 
     List<User> selectByName(String name);
 
     Boolean deleteByUserName(String userName);
+
+    Dictionary<String,Object> updateUser(String username, String type, String value);
 }

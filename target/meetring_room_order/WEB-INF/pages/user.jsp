@@ -48,5 +48,19 @@
         unit: <input type="text" name="unit"><br>
         <input type="submit" value="submit">
     </form>
+    <h2>changePassword</h2>
+    <form action="${ctx}/changePassword">
+        userid: <input type="text" name="userid"><br>
+        oldpassword: <input type="text" name="oldpassword"><br>
+        newpassword: <input type="text" name="newpassword"><br>
+        <input type="submit" value="submit">
+    </form>
+    <h2>updateUser</h2>
+    <form action="${ctx}/updateUser">
+        username: <input type="text" name="username"><br>
+        type: <input type="text" name="type"><br>
+        value: <input type="text" name="value"><br>
+        <input type="submit" value="submit">
+    </form>
 </body>
 </html>

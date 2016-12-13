@@ -43,9 +43,46 @@
         department: <input type="text" name="department"><br>
         <input type="submit" value="submit">
     </form>
+    <br>
     <h2>searchUserByUnit</h2>
     <form action="${ctx}/searchUserByUnit">
         unit: <input type="text" name="unit"><br>
+        <input type="submit" value="submit">
+    </form>
+    <br>
+    <h2>changePassword</h2>
+    <form action="${ctx}/changePassword">
+        userid: <input type="text" name="userid"><br>
+        oldpassword: <input type="text" name="oldpassword"><br>
+        newpassword: <input type="text" name="newpassword"><br>
+        <input type="submit" value="submit">
+    </form>
+    <br>
+    <h2>updateUser</h2>
+    <form action="${ctx}/updateUser">
+        username: <input type="text" name="username"><br>
+        type: <input type="text" name="type"><br>
+        value: <input type="text" name="value"><br>
+        <input type="submit" value="submit">
+    </form>
+    <br>
+    <h2>updateUser</h2>
+    <form action="${ctx}/updateUser">
+        username: <input type="text" name="username"><br>
+        type: <input type="text" name="type"><br>
+        value: <input type="text" name="value"><br>
+        <input type="submit" value="submit">
+    </form>
+    <br>
+    <h2>adminSearchUser</h2>
+    <form action="${ctx}/adminSearchUser">
+        name: <input type="text" name="name"><br>
+        <input type="submit" value="submit">
+    </form>
+    <br>
+    <h2>deleteUser</h2>
+    <form action="${ctx}/deleteUser">
+        username: <input type="text" name="username"><br>
         <input type="submit" value="submit">
     </form>
 </body>

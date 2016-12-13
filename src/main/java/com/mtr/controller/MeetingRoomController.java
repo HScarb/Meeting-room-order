@@ -29,19 +29,36 @@ public class MeetingRoomController {
         return mav;
     }
 
+    /**
+     * 7.根据会议室id得到会议室详细情况
+     * @param request
+     * @return
+     */
     @ResponseBody
     @RequestMapping("/meetingRoomProperties")
     public MeetingRoom meetingRoomProperties(HttpServletRequest request)
     {
         String meetingRoomID = request.getParameter("mtrnumber");
-        Integer id = Integer.parseInt(meetingRoomID);
+        try {
+            Integer id = Integer.parseInt(meetingRoomID);
 
-        MeetingRoomExample meetingRoomExample = new MeetingRoomExample();
-        MeetingRoomExample.Criteria cri = meetingRoomExample.createCriteria();
+            return meetingRoomService.selectByMeetingRoomID(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
 
-        return meetingRoomService.selectByMeetingRoomID(id);
+//        MeetingRoomExample meetingRoomExample = new MeetingRoomExample();
+//        MeetingRoomExample.Criteria cri = meetingRoomExample.createCriteria();
+
+
     }
 
+    /**
+     * 12.删除会议室
+     * @param request
+     * @return
+     */
     @ResponseBody
     @RequestMapping("/deleteMeetingRoom")
     public Dictionary<String, Boolean> deleteMeetingRoom(HttpServletRequest request)

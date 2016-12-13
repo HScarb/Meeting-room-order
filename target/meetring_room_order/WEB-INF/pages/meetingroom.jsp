@@ -8,11 +8,17 @@
 %>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Login</title>
+    <title>meetingroom</title>
 </head>
 <html>
 <body>
-<h2>Meeting room order system</h2>
+<h2>meetingRoomProperties</h2>
+<form action="${ctx}/meetingRoomProperties">
+    mtrnumber: <input type="text" name="mtrnumber"><br>
+    <input type="submit" value="submit">
+</form>
+<br>
+<h2>searchFreeMeetingRoom</h2>
 <form action="${ctx}/searchFreeMeetingRoom">
     start time: <input type="text" name="starttime"><br>
     end time: <input type="test" name="endtime"><br>

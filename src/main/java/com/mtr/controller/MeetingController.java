@@ -49,6 +49,11 @@ public class MeetingController {
         return mav;
     }
 
+    /**
+     * 8.查看用户预定的会议
+     * @param request
+     * @return
+     */
     @ResponseBody
     @RequestMapping("/userMeeting")
     public List<Meeting> userMeeting(HttpServletRequest request)
@@ -99,6 +104,11 @@ public class MeetingController {
         return meetingService.checkAddMeeting(meeting);
     }
 
+    /**
+     * 17.返回该user参加的未完成的会议
+     * @param request
+     * @return
+     */
     @ResponseBody
     @RequestMapping("/searchMeetingByMemberId")
     public List<Meeting> searchMeetingByMemberId(HttpServletRequest request)

@@ -116,9 +116,14 @@ public class UserController {
         return userService.selectByExample(userExample);
     }
 
+    /**
+     * 9.修改密码
+     * @param request
+     * @return
+     */
     @ResponseBody
     @RequestMapping("/changePassword")
-    public Dictionary<String, Boolean> changePassword(HttpServletRequest request)
+    public Dictionary<String, Object> changePassword(HttpServletRequest request)
     {
         String userID = request.getParameter("userid");
         String oldpwd = request.getParameter("oldpassword");
@@ -126,11 +131,30 @@ public class UserController {
 
         Integer ID = Integer.parseInt(userID);
 
-        Dictionary<String, Boolean> dictionary = new Hashtable<String, Boolean>();
-        dictionary.put("Status", userService.changePassword(ID, oldpwd, newpwd));
-        return dictionary;
+        return userService.changePassword(ID, oldpwd, newpwd);
     }
 
+    /**
+     * 10.修改个人信息
+     * @param request
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping("/updateUser")
+    public Dictionary<String, Object> updateUser(HttpServletRequest request)
+    {
+        String username = request.getParameter("username");
+        String type = request.getParameter("type");
+        String value = request.getParameter("value");
+
+        return userService.updateUser(username, type, value);
+    }
+
+    /**
+     * 14.管理员搜索用户
+     * @param request
+     * @return
+     */
     @ResponseBody
     @RequestMapping("/adminSearchUser")
     public List<User> adminUpdateUser(HttpServletRequest request)
@@ -160,16 +184,5 @@ public class UserController {
     public void addUser(HttpServletRequest request)
     {
         return;
-    }
-
-
-    @ResponseBody
-    @RequestMapping("/updateUser")
-    public Dictionary<String, Boolean> updateUser(HttpServletRequest request)
-    {
-        String type = request.getParameter("type");
-        String value = request.getParameter("value");
-
-        return null;
     }
 }
