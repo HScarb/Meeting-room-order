@@ -12,16 +12,12 @@
 </head>
 <html>
 <body>
-<h2>Meeting room order system</h2>
-<form action="${ctx}/searchFreeMeetingRoom">
-    start time: <input type="text" name="starttime"><br>
-    end time: <input type="test" name="endtime"><br>
-    <input type="submit" value="submit">
-</form>
+<h2>Meeting room order system API guide</h2>
+<a href="${ctx}/user">user API</a>
 <br>
-<form action="${ctx}/userMeeting">
-    userName: <input type="test" name="username"><br>
-    <input type="submit" value="submit">
+<a href="${ctx}/meeting">meeting API</a>
+<br>
+<a href="${ctx}/meetingroom">meetingroom API</a>
 </form>
 </body>
 </html>

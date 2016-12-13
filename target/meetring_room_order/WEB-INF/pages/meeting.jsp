@@ -26,16 +26,15 @@
         <input type="submit" value="submit">
     </form>
     <br>
-    <form action="${ctx}/searchMeetingByMemberId" method="post">
-        <h2>searchMeetingByMemberId</h2>
-        memberid: <input type="text" name="memberid"><br>
-        <input type="submit" value="submit">
-    </form>
-    <br>
-    <br>
     <form action="${ctx}/userMeeting">
         <h2>userMeeting</h2>
         userName: <input type="test" name="username"><br>
+        <input type="submit" value="submit">
+    </form>
+    <br>
+    <form action="${ctx}/searchMeetingByMemberId" method="post">
+        <h2>searchMeetingByMemberId</h2>
+        memberid: <input type="text" name="memberid"><br>
         <input type="submit" value="submit">
     </form>
 </body>

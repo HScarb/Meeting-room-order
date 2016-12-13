@@ -12,22 +12,27 @@
 </head>
 <html>
 <body>
-<h2>meetingRoomProperties</h2>
-<form action="${ctx}/meetingRoomProperties">
-    mtrnumber: <input type="text" name="mtrnumber"><br>
-    <input type="submit" value="submit">
-</form>
-<br>
-<h2>searchFreeMeetingRoom</h2>
-<form action="${ctx}/searchFreeMeetingRoom">
-    start time: <input type="text" name="starttime"><br>
-    end time: <input type="test" name="endtime"><br>
-    <input type="submit" value="submit">
-</form>
-<br>
-<form action="${ctx}/userMeeting">
-    userName: <input type="test" name="username"><br>
-    <input type="submit" value="submit">
-</form>
+    <h2>meetingRoomProperties</h2>
+    <form action="${ctx}/meetingRoomProperties">
+        mtrnumber: <input type="text" name="mtrnumber"><br>
+        <input type="submit" value="submit">
+    </form>
+    <br>
+    <h2>searchFreeMeetingRoom</h2>
+    <form action="${ctx}/searchFreeMeetingRoom">
+        start time: <input type="text" name="starttime"><br>
+        end time: <input type="test" name="endtime"><br>
+        <input type="submit" value="submit">
+    </form>
+    <br>
+    <h2>deleteMeetingRoom</h2>
+    <form action="${ctx}/deleteMeetingRoom">
+        mtrnumber: <input type="text" name="mtrnumber"><br>
+        <input type="submit" value="submit">
+    </form>
+    <form action="${ctx}/userMeeting">
+        userName: <input type="test" name="username"><br>
+        <input type="submit" value="submit">
+    </form>
 </body>
 </html>
